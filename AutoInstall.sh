@@ -13,6 +13,8 @@ echo '
 ==============================================================================
 '
 # Copiar archivos
+mkdir -p ~/.config/KaliDesign
+
 echo "Copiando archivos desde ~/KaliDesign/Elementos a ~/.config/KaliDesign/"
 
 cp -r ~/KaliDesign/Elementos/* ~/.config/KaliDesign/
