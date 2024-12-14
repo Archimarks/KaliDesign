@@ -54,13 +54,14 @@ done
 
 echo "Fondo de pantalla configurado correctamente."
 
-# Importar el archivo de configuración del panel (sin descomprimirlo)
+# Importar el archivo de configuración del panel (descomprimiendo primero)
 if [ -f "$PANEL_PATH" ]; then
-    echo "Importando panel desde $PANEL_PATH"
-    xfce4-panel --load-panel="$PANEL_PATH"
+    echo "Descomprimiendo el archivo de panel $PANEL_PATH"
+    PANEL_UNCOMPRESSED="${PANEL_PATH%.bz2.bz2}"
+    bunzip2 -k "$PANEL_PATH"  # Descomprime el archivo, dejando el original intacto
+    echo "Importando panel desde $PANEL_UNCOMPRESSED"
+    xfce4-panel --load-panel="$PANEL_UNCOMPRESSED"
 else
     echo "Error: No se encontró el archivo de panel $PANEL_PATH."
     exit 1
 fi
-
-echo "Panel importado correctamente."
