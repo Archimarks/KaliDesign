@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Obtener la IP desde los argumentos
+IP="$1"
+
+if [ -n "$IP" ]; then
+    echo -n "$IP" | xclip -selection clipboard
+    notify-send "IP VPN copiada" "$IP"
+else
+    notify-send "Error" "No hay dirección IP para copiar."
+fi

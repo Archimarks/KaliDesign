@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Obtener la IP desde los argumentos
+ip_address="$1"
+
+if [ -n "$ip_address" ]; then
+    echo -n "$ip_address" | xclip -selection clipboard
+    notify-send "IP copiada" "$ip_address"
+else
+    notify-send "Error" "No hay dirección IP para copiar."
+fi
+

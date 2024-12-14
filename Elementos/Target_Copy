@@ -1,0 +1,45 @@
+#!/bin/bash
+
+# Ruta del archivo que contiene la IP del Target
+TARGET_FILE="/home/askmo/Documentos/Elementos/Target_IP"
+
+# Leer la IP actual
+ip_address=$(cat "$TARGET_FILE" 2>/dev/null | awk '{print $1}')
+
+# Mostrar el menú usando Zenity
+choice=$(zenity --list \
+    --title="Gestión del Target" \
+    --text="Seleccione una opción para el Target" \
+    --column="Acción" --column="Descripción" \
+    "Copiar" "Copiar la dirección IP al portapapeles" \
+    "Actualizar" "Actualizar la dirección IP del Target" \
+    "Limpiar" "Eliminar el Target actual")
+
+# Procesar la elección
+case "$choice" in
+    "Copiar")
+        if [ -n "$ip_address" ]; then
+            echo -n "$ip_address" | xclip -selection clipboard
+            notify-send "Target copiado" "$ip_address"
+        else
+            zenity --error --text="No hay Target definido para copiar."
+        fi
+        ;;
+    "Actualizar")
+        new_ip=$(zenity --entry --title="Actualizar Target" --text="Ingrese la nueva dirección IP:")
+        if [ -n "$new_ip" ]; then
+            echo "$new_ip" > "$TARGET_FILE"
+            notify-send "Target actualizado" "Nuevo Target: $new_ip"
+        else
+            zenity --error --text="No se ingresó ninguna IP."
+        fi
+        ;;
+    "Limpiar")
+        > "$TARGET_FILE"
+        notify-send "Target limpiado" "No hay Target definido."
+        ;;
+    *)
+        # Si se cierra el menú sin elegir nada
+        exit 0
+        ;;
+esac
