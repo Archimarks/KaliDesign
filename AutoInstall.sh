@@ -1,8 +1,4 @@
 #!/bin/bash
-
-
-
-
 # AUTOR
 echo '
 ==============================================================================
@@ -16,10 +12,6 @@ echo '
                                                                                                                                                                                                         
 ==============================================================================
 '
-
-# Actualizar el sistema
-apt update && apt upgrade -y
-
 # Copiar archivos
 echo "Copiando archivos desde ~/KaliDesign/Elementos a ~/.config/KaliDesign/"
 
@@ -36,7 +28,6 @@ fi
 echo "Otorgando permisos de ejecución a todos los elementos en ~/.config/KaliDesign/"
 
 find ~/.config/KaliDesign/ -type f -exec chmod +x {} \;
-find ~/KaliDesign/Elementos -type f -exec chmod +x {} \;
 
 if [ $? -eq 0 ]; then
     echo "Permisos de ejecución asignados con éxito."
@@ -45,33 +36,14 @@ else
     exit 1
 fi
 
-
-# Verificar y limpiar configuración anterior del panel
-if [ -d "~/.config/xfce4/panel/" ]; then
-    rm -f ~/.config/xfce4/panel/*
-fi
-
-# Extraer el perfil de panel
-if [ -f "~/KaliDesign/Elementos/Paneles/Paneles Version 1.tar.bz2" ]; then
-    tar -xvjf "~/KaliDesign/Elementos/Paneles/Paneles Version 1.tar.bz2" -C ~/.config/xfce4/panel/
-else
-    echo "El archivo Paneles Version 1.tar.bz2 no existe. Abortando."
-    exit 1
-fi
-
-# Reiniciar el panel
-if command -v xfce4-panel >/dev/null 2>&1; then
-    xfce4-panel --restart
-else
-    echo "El comando xfce4-panel no está disponible. Asegúrate de estar usando XFCE."
-    exit 1
-fi
-
-# Establecer el fondo de pantalla
-WALLPAPER_PATH="$HOME/KaliDesign/Elementos/Wallpapers/wallpaper1.jpg"
+# Configurar el fondo de pantalla
+WALLPAPER_PATH="$HOME/.config/KaliDesign/Elementos/Wallpapers/wallpaper1.jpg"
 
 if [ -f "$WALLPAPER_PATH" ]; then
-    xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/image-path -s "$WALLPAPER_PATH"
+    echo "Configurando fondo de pantalla..."
+
+    xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/workspace0/last-image -s "$WALLPAPER_PATH"
+
     if [ $? -eq 0 ]; then
         echo "Fondo de pantalla configurado exitosamente."
     else
@@ -82,3 +54,57 @@ else
     echo "El archivo $WALLPAPER_PATH no existe. Abortando."
     exit 1
 fi
+
+# Importar configuración de paneles
+PANEL_CONFIG="$HOME/KaliDesign/Elementos/Paneles/Paneles.bz2"
+XFCE_PANEL_PATH="$HOME/.config/xfce4/panel/"
+
+if [ -f "$PANEL_CONFIG" ]; then
+    echo "Extrayendo configuración de paneles desde $PANEL_CONFIG..."
+    mkdir -p "$XFCE_PANEL_PATH"
+    tar -xvjf "$PANEL_CONFIG" -C "$XFCE_PANEL_PATH"
+
+    if [ $? -eq 0 ]; then
+        echo "Configuración de paneles extraída con éxito."
+    else
+        echo "Error al extraer la configuración de paneles."
+        exit 1
+    fi
+
+    echo "Reiniciando panel de XFCE..."
+    if command -v xfce4-panel >/dev/null 2>&1; then
+        xfce4-panel --restart
+        echo "Panel de XFCE reiniciado correctamente."
+    else
+        echo "El comando xfce4-panel no está disponible. Asegúrate de estar usando XFCE."
+        exit 1
+    fi
+else
+    echo "El archivo $PANEL_CONFIG no existe. Abortando."
+    exit 1
+fi
+
+# Asegurarse de que los cambios sean permanentes (autoinicio)
+echo "Creando archivo de autoinicio para garantizar la persistencia de la configuración..."
+
+AUTOSTART_DIR="$HOME/.config/autostart"
+mkdir -p "$AUTOSTART_DIR"
+
+cat <<EOF > "$AUTOSTART_DIR/set-config.desktop"
+[Desktop Entry]
+Type=Application
+Exec=/bin/bash -c "xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/workspace0/last-image -s '$WALLPAPER_PATH' && xfce4-panel --restart"
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name=Set XFCE Config
+EOF
+
+if [ $? -eq 0 ]; then
+    echo "Archivo de autoinicio creado exitosamente."
+else
+    echo "Hubo un error al crear el archivo de autoinicio."
+    exit 1
+fi
+
+echo "Configuración completada. Los cambios deberían ser permanentes después de reiniciar."

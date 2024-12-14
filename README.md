@@ -16,6 +16,8 @@
 
 # Instalación
 
+- apt update && apt upgrade -y
+
 - git clone https://github.com/Archimarks/KaliDesign.git
 
 - cd KaliDesign/
