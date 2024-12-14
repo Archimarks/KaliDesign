@@ -15,8 +15,8 @@ echo '
 # Configuración
 SOURCE_DIR="$HOME/KaliDesign/Elementos"
 DEST_DIR="$HOME/.config/KaliDesign"
-WALLPAPER_PATH="$DEST_DIR/Wallpapers/wallpaper1.jpg"
-PANEL_PATH="$DEST_DIR/Paneles/Paneles"
+WALLPAPER_PATH="$DEST_DIR/Wallpapers/wallpaper.jpg"
+PANEL_PATH="$DEST_DIR/Paneles/Paneles.bz2"
 
 # Crear directorio de destino
 if [ ! -d "$DEST_DIR" ]; then
@@ -54,37 +54,13 @@ done
 
 echo "Fondo de pantalla configurado correctamente."
 
-# Importar panel
+# Importar el archivo de configuración del panel (sin descomprimirlo)
 if [ -f "$PANEL_PATH" ]; then
     echo "Importando panel desde $PANEL_PATH"
-    
-    # Ruta del archivo descomprimido
-    PANEL_FILE="${PANEL_PATH%.bz2}"
-
-    # Verificar y descomprimir el archivo
-    if [[ "$PANEL_PATH" == *.bz2 ]]; then
-        bunzip2 -f "$PANEL_PATH"
-        if [ -f "$PANEL_FILE" ]; then
-            echo "Archivo descomprimido correctamente: $PANEL_FILE"
-        else
-            echo "Error: La descompresión falló. Asegúrate de que bunzip2 está instalado."
-            exit 1
-        fi
-    else
-        echo "Error: El archivo no tiene la extensión .bz2."
-        exit 1
-    fi
-
-    # Copiar el archivo descomprimido a la configuración de XFCE
-    echo "Copiando el archivo descomprimido a la configuración de XFCE..."
-    cp "$PANEL_FILE" "$HOME/.config/xfce4/xfconf/xfce-perchannel-xml/"
-    
-    # Reiniciar el panel para aplicar los cambios
-    echo "Reiniciando el panel para aplicar la configuración..."
-    xfce4-panel --restart
-    
-    echo "Panel importado y configurado correctamente."
+    xfce4-panel --load-panel="$PANEL_PATH"
 else
-    echo "Error: El archivo $PANEL_PATH no existe."
+    echo "Error: No se encontró el archivo de panel $PANEL_PATH."
     exit 1
 fi
+
+echo "Panel importado correctamente."
