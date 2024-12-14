@@ -24,7 +24,7 @@
 
 - chmod +x AutoInstall.sh
 
-- sudo ./AutoInstall.sh
+- ./AutoInstall.sh
 
 ## Créditos
 
