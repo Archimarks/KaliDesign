@@ -39,7 +39,7 @@ else
 fi
 
 # Configurar el fondo de pantalla
-WALLPAPER_PATH="$HOME/.config/KaliDesign/Elementos/Wallpapers/wallpaper1.jpg"
+WALLPAPER_PATH="$.config/KaliDesign/Elementos/Wallpapers/wallpaper1.jpg"
 
 if [ -f "$WALLPAPER_PATH" ]; then
     echo "Configurando fondo de pantalla..."
