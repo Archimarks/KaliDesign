@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# Verificar si se está ejecutando como root
+if [ "$EUID" -eq 0 ]; then
+    echo "No ejecutes este script como root."
+    exit 1
+fi
+
 # AUTOR
 echo '
 ==============================================================================
@@ -14,24 +20,38 @@ echo '
 ==============================================================================
 '
 
-# ACTUALIZAMOS EL SISTEMA
+# Actualizar el sistema
+apt update && apt upgrade -y
 
-apt update 
-apt upgrade -y
-
-# COPIAMOS LOS ARCHIVOS
+# Copiar archivos
 echo "Copiando archivos desde ~/KaliDesign/Elementos a ~/.config/KaliDesign/"
 
 cp -r ~/KaliDesign/Elementos/* ~/.config/KaliDesign/
 
-# VERIFICAMOS SI SE COPIARON LOS ARCHIVOS
 if [ $? -eq 0 ]; then
     echo "Archivos copiados con éxito."
 else
     echo "Hubo un error al copiar los archivos."
+    exit 1
 fi
 
-rm ~/.config/xfce4/panel/*
-tar -xvjf ~/KaliDesign/Elementos/Paneles/Paneles Version 1.tar.bz2 -C ~/KaliDesign/Elementos/Paneles/
-xfce4-panel --restart
+# Verificar y limpiar configuración anterior del panel
+if [ -d "~/.config/xfce4/panel/" ]; then
+    rm -f ~/.config/xfce4/panel/*
+fi
 
+# Extraer el perfil de panel
+if [ -f "~/KaliDesign/Elementos/Paneles/Paneles Version 1.tar.bz2" ]; then
+    tar -xvjf "~/KaliDesign/Elementos/Paneles/Paneles Version 1.tar.bz2" -C ~/.config/xfce4/panel/
+else
+    echo "El archivo Paneles Version 1.tar.bz2 no existe. Abortando."
+    exit 1
+fi
+
+# Reiniciar el panel
+if command -v xfce4-panel >/dev/null 2>&1; then
+    xfce4-panel --restart
+else
+    echo "El comando xfce4-panel no está disponible. Asegúrate de estar usando XFCE."
+    exit 1
+fi
