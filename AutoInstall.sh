@@ -12,9 +12,16 @@ echo '
                                                                                                                                                                                                         
 ==============================================================================
 '
+# Crear directorio de configuración si no existe
+mkdir -p ~/.config/KaliDesign
+
+echo "Copiando archivos desde ~/KaliDesign/Elementos a ~/.config/KaliDesign/"
+
+# Copiar archivos
+cp -r ~/KaliDesign/Elementos/* ~/.config/KaliDesign/
 
 # Ruta al fondo de pantalla
-WALLPAPER_PATH="$HOME/.config/KaliDesign/Wallpapers/wallpaper1.jpg"
+WALLPAPER_PATH=".config/KaliDesign/Wallpapers/wallpaper1.jpg"
 
 # Verifica que el archivo exista
 if [ ! -f "$WALLPAPER_PATH" ]; then
