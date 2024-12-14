@@ -1,9 +1,6 @@
 #!/bin/bash
 
-# Verificar si se está ejecutando como root
-if [ "$(whoami)" == "root" ]; then
-    exit 1
-fi
+
 
 
 # AUTOR
