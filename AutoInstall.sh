@@ -15,7 +15,7 @@ echo '
 # Configuración
 SOURCE_DIR="$HOME/KaliDesign/Elementos"
 DEST_DIR="$HOME/.config/KaliDesign"
-WALLPAPER_PATH="$DEST_DIR/Wallpapers/wallpaper.jpg"
+WALLPAPER_PATH="$DEST_DIR/Wallpapers/wallpaper1.jpg"
 PANEL_PATH="$DEST_DIR/Paneles/Paneles.bz2"
 
 # Crear directorio de destino
@@ -58,26 +58,32 @@ echo "Fondo de pantalla configurado correctamente."
 if [ -f "$PANEL_PATH" ]; then
     echo "Importando panel desde $PANEL_PATH"
     
-    # Descomprimir el archivo
-    bunzip2 -f "$PANEL_PATH" # Usa -f para forzar la descompresión y sobrescribir si es necesario
-    
-    # Verifica si la descompresión fue exitosa
-    PANEL_FILE="${PANEL_PATH%.bz2}" # Nombre del archivo descomprimido (sin la extensión .bz2)
-    if [ -f "$PANEL_FILE" ]; then
-        echo "Archivo descomprimido: $PANEL_FILE"
-        
-        # Copiar el archivo descomprimido a la configuración de XFCE
-        cp "$PANEL_FILE" "$HOME/.config/xfce4/xfconf/xfce-perchannel-xml/"
-        
-        # Reiniciar el panel para aplicar los cambios
-        echo "Reiniciando el panel para aplicar la configuración..."
-        xfce4-panel --restart
-        
-        echo "Panel importado y configurado correctamente."
+    # Ruta del archivo descomprimido
+    PANEL_FILE="${PANEL_PATH%.bz2}"
+
+    # Verificar y descomprimir el archivo
+    if [[ "$PANEL_PATH" == *.bz2 ]]; then
+        bunzip2 -f "$PANEL_PATH"
+        if [ -f "$PANEL_FILE" ]; then
+            echo "Archivo descomprimido correctamente: $PANEL_FILE"
+        else
+            echo "Error: La descompresión falló. Asegúrate de que bunzip2 está instalado."
+            exit 1
+        fi
     else
-        echo "Error: No se pudo descomprimir el archivo $PANEL_PATH."
+        echo "Error: El archivo no tiene la extensión .bz2."
         exit 1
     fi
+
+    # Copiar el archivo descomprimido a la configuración de XFCE
+    echo "Copiando el archivo descomprimido a la configuración de XFCE..."
+    cp "$PANEL_FILE" "$HOME/.config/xfce4/xfconf/xfce-perchannel-xml/"
+    
+    # Reiniciar el panel para aplicar los cambios
+    echo "Reiniciando el panel para aplicar la configuración..."
+    xfce4-panel --restart
+    
+    echo "Panel importado y configurado correctamente."
 else
     echo "Error: El archivo $PANEL_PATH no existe."
     exit 1
