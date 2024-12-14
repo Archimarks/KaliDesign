@@ -39,7 +39,7 @@ else
 fi
 
 # Configurar el fondo de pantalla
-WALLPAPER_PATH="$.config/KaliDesign/Elementos/Wallpapers/wallpaper1.jpg"
+WALLPAPER_PATH="$.config/KaliDesign/Wallpapers/wallpaper1.jpg"
 
 if [ -f "$WALLPAPER_PATH" ]; then
     echo "Configurando fondo de pantalla..."
@@ -58,8 +58,8 @@ else
 fi
 
 # Importar configuración de paneles
-PANEL_CONFIG="$HOME/KaliDesign/Elementos/Paneles/Paneles.bz2"
-XFCE_PANEL_PATH="$HOME/.config/xfce4/panel/"
+PANEL_CONFIG="$.config/KaliDesign/Paneles/Paneles.bz2"
+XFCE_PANEL_PATH="$.config/xfce4/panel/"
 
 if [ -f "$PANEL_CONFIG" ]; then
     echo "Extrayendo configuración de paneles desde $PANEL_CONFIG..."
@@ -89,7 +89,7 @@ fi
 # Asegurarse de que los cambios sean permanentes (autoinicio)
 echo "Creando archivo de autoinicio para garantizar la persistencia de la configuración..."
 
-AUTOSTART_DIR="$HOME/.config/autostart"
+AUTOSTART_DIR="$.config/autostart"
 mkdir -p "$AUTOSTART_DIR"
 
 cat <<EOF > "$AUTOSTART_DIR/set-config.desktop"
