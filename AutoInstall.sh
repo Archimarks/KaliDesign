@@ -58,9 +58,11 @@ echo "Fondo de pantalla configurado correctamente."
 if [ -f "$PANEL_PATH" ]; then
     echo "Descomprimiendo el archivo de panel $PANEL_PATH"
     PANEL_UNCOMPRESSED="${PANEL_PATH%.bz2.bz2}"
-    bunzip2 -k "$PANEL_PATH"  # Descomprime el archivo, dejando el original intacto
-    echo "Importando panel desde $PANEL_UNCOMPRESSED"
-    xfce4-panel --load-panel="$PANEL_UNCOMPRESSED"
+    bunzip2 -k "$PANEL_PATH"  # Descomprimir sin eliminar el archivo original
+    echo "Copiando el archivo de panel descomprimido a la ubicación de configuración de XFCE"
+    
+    # Copiar la configuración del panel descomprimida a la ubicación correspondiente
+    cp "$PANEL_UNCOMPRESSED" ~/.config/xfce4/panel/
 else
     echo "Error: No se encontró el archivo de panel $PANEL_PATH."
     exit 1
