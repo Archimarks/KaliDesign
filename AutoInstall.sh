@@ -59,10 +59,10 @@ if [ -f "$PANEL_PATH" ]; then
     echo "Importando panel desde $PANEL_PATH"
     
     # Descomprimir el archivo
-    bunzip2 -k "$PANEL_PATH" # Usa la opción -k para mantener el archivo original.
+    bunzip2 -f "$PANEL_PATH" # Usa -f para forzar la descompresión y sobrescribir si es necesario
     
     # Verifica si la descompresión fue exitosa
-    PANEL_FILE="${PANEL_PATH}" # Remueve la extensión .bz2 para obtener el nombre original
+    PANEL_FILE="${PANEL_PATH%.bz2}" # Nombre del archivo descomprimido (sin la extensión .bz2)
     if [ -f "$PANEL_FILE" ]; then
         echo "Archivo descomprimido: $PANEL_FILE"
         
