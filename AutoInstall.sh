@@ -62,7 +62,7 @@ if [ -f "$PANEL_PATH" ]; then
     bunzip2 -k "$PANEL_PATH" # Usa la opción -k para mantener el archivo original.
     
     # Verifica si la descompresión fue exitosa
-    PANEL_FILE="${PANEL_PATH%.bz2}" # Remueve la extensión .bz2 para obtener el nombre original
+    PANEL_FILE="${PANEL_PATH}" # Remueve la extensión .bz2 para obtener el nombre original
     if [ -f "$PANEL_FILE" ]; then
         echo "Archivo descomprimido: $PANEL_FILE"
         
