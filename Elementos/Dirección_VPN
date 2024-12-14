@@ -4,12 +4,12 @@
 IFACE=$(/usr/sbin/ifconfig | grep tun0 | awk '{print $1}' | tr -d ':')
 
 # Agregar el icono de la IP
-icon="/home/askmo/Documentos/Elementos/Iconos/vpn.png"
+icon="~/KaliDesign/Elementos/Iconos/vpn.png"
 
 if [ "$IFACE" = "tun0" ]; then
     IP=$(/usr/sbin/ifconfig tun0 | grep "inet " | awk '{print $2}')
     echo "<img>$icon</img><txt> $IP </txt>"
-    echo "<txtclick>bash /home/askmo/Documentos/Elementos/Dirección_VPN_Copy '$IP'</txtclick>"
+    echo "<txtclick>bash ~/KaliDesign/Elementos/Dirección_VPN_Copy '$IP'</txtclick>"
 else
 
     echo " <img>$icon</img><txt> Disconnected </txt>"
