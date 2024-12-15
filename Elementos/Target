@@ -1,14 +1,14 @@
 #!/bin/bash
 
 # Ruta del archivo que contiene la IP del Target
-TARGET_FILE="~/KaliDesign/Elementos/Target_IP"
+TARGET_FILE="$HOME/.config/KaliDesign/Elementos/Target_IP"
 
 $CONTROL_FILE = ""
 
 # Leer la IP actual
 ip_address=$(cat "$TARGET_FILE" 2>/dev/null | awk '{print $1}')
 # Agregar el icono de la IP
-icon="~/KaliDesign/Elementos/Iconos/target.png"
+icon="$HOME/.config/KaliDesign/Elementos/Iconos/target.png"
 
 # Verificar si la IP es válida
 if [ -z "$ip_address" ]; then
@@ -21,5 +21,5 @@ fi
 echo " <img>$icon</img> <txt> $ip_address </txt>"
 
 if [ "$ip_address" != "Disconnected" ]; then
-    echo "<txtclick> bash ~/KaliDesign/Elementos/Target_Copy '$ip_address'</txtclick>"
+    echo "<txtclick> bash $HOME/.config/KaliDesign/Elementos/Target_Copy '$ip_address'</txtclick>"
 fi
