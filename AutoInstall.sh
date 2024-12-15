@@ -15,8 +15,8 @@ echo '
 # Configuración
 SOURCE_DIR="$HOME/KaliDesign/Elementos"
 DEST_DIR="$HOME/.config/KaliDesign"
-WALLPAPER_PATH="$DEST_DIR/Wallpapers/wallpaper1.jpg"
-PANEL_PATH="$SOURCE_DIR/Paneles/Panel.tra.bz2"
+WALLPAPER_PATH="$DEST_DIR/Wallpapers/wallpaper.jpg"
+PANEL_PATH="$SOURCE_DIR/Paneles/Panel.tar.bz2"
 
 # Crear directorio de destino
 if [ ! -d "$DEST_DIR" ]; then
@@ -57,12 +57,12 @@ echo "Fondo de pantalla configurado correctamente."
 
 # Verificar si el archivo Panel.tra.bz2 existe antes de intentar descomprimir
 if [ -f "$PANEL_PATH" ]; then
-    echo "Restaurando configuración de los paneles desde $PANEL_PATH"
+    echo "Restaurando configuración de los paneles desde $PANEL_PATH   "
     # Descomprimir el archivo en la ubicación correcta
     tar -xjf "$PANEL_PATH" -C "$HOME/.config/xfce4/"
     echo "Configuración de paneles restaurada correctamente."
 else
-    echo "Error: No se encontró el archivo $PANEL_PATH."
+    echo "Error: No se encontró el archivo $PANEL_PATH   "
     exit 1
 fi
 
