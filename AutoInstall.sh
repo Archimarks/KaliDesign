@@ -16,7 +16,7 @@ echo '
 SOURCE_DIR="$HOME/KaliDesign/Elementos"
 DEST_DIR="$HOME/.config/KaliDesign"
 WALLPAPER_PATH="$DEST_DIR/Wallpapers/wallpaper.jpg"
-PANEL_PATH="$DEST_DIR/Paneles/Paneles.bz2.bz2"
+PANEL_PATH="$DEST_DIR/Paneles/Paneles.tar"
 
 # Crear directorio de destino
 if [ ! -d "$DEST_DIR" ]; then
@@ -57,7 +57,7 @@ echo "Fondo de pantalla configurado correctamente."
 # Importar el archivo de configuración del panel (descomprimiendo primero)
 if [ -f "$PANEL_PATH" ]; then
     echo "Descomprimiendo el archivo de panel $PANEL_PATH"
-    PANEL_UNCOMPRESSED="${PANEL_PATH%.bz2.bz2}"
+    PANEL_UNCOMPRESSED="${PANEL_PATHs}"
     bunzip2 -k "$PANEL_PATH"  # Descomprimir sin eliminar el archivo original
     echo "Copiando el archivo de panel descomprimido a la ubicación de configuración de XFCE"
     
