@@ -16,7 +16,7 @@ echo '
 SOURCE_DIR="$HOME/KaliDesign/Elementos"
 DEST_DIR="$HOME/.config/KaliDesign"
 WALLPAPER_PATH="$DEST_DIR/Wallpapers/wallpaper.jpg"
-PANEL_PATH="$SOURCE_DIR/Paneles/Paneles.tar.bz2 "
+PANEL_PATH="$SOURCE_DIR/Paneles/Panel.tar.bz2"
 
 # Crear directorio de destino
 if [ ! -d "$DEST_DIR" ]; then
