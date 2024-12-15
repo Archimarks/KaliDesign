@@ -16,7 +16,7 @@ echo '
 SOURCE_DIR="$HOME/KaliDesign/Elementos"
 DEST_DIR="$HOME/.config/KaliDesign"
 WALLPAPER_PATH="$DEST_DIR/Wallpapers/wallpaper.jpg"
-PANEL_PATH="$DEST_DIR/Paneles/Paneles.tar.bz2"
+PANEL_PATH="$SOURCE_DIR/Paneles/Paneles.tar.bz2"
 
 # Crear directorio de destino
 if [ ! -d "$DEST_DIR" ]; then
@@ -54,16 +54,18 @@ done
 
 echo "Fondo de pantalla configurado correctamente."
 
-# Importar el archivo de configuración del panel (descomprimiendo primero)
+
+# Restaurar configuración de paneles XFCE
 if [ -f "$PANEL_PATH" ]; then
-    echo "Descomprimiendo el archivo de panel $PANEL_PATH"
-    PANEL_UNCOMPRESSED= $PANEL_PATH
-    bunzip2 -k "$PANEL_PATH"  # Descomprimir sin eliminar el archivo original
-    echo "Copiando el archivo de panel descomprimido a la ubicación de configuración de XFCE"
-    
-    # Copiar la configuración del panel descomprimida a la ubicación correspondiente
-    cp "$PANEL_UNCOMPRESSED" ~/.config/xfce4/panel/
+    echo "Restaurando configuración de los paneles desde $PANEL_PATH"
+    tar -xjf "$PANEL_PATH" -C "$HOME/.config/xfce4/"
+    echo "Configuración de paneles restaurada correctamente."
 else
-    echo "Error: No se encontró el archivo de panel $PANEL_PATH."
+    echo "Error: No se encontró el archivo $PANEL_PATH."
     exit 1
 fi
+
+# Recargar paneles XFCE
+echo "Recargando configuración de los paneles XFCE"
+xfce4-panel --restart
+echo "Paneles XFCE recargados correctamente."
