@@ -13,10 +13,10 @@ echo '
 '
 
 # Configuración
-SOURCE_DIR="$HOME/KaliDesign/Elementos"
-DEST_DIR="$HOME/.config/KaliDesign"
-WALLPAPER_PATH="$DEST_DIR/Wallpapers/wallpaper.jpg"
-PANEL_PATH="$SOURCE_DIR/Paneles/Paneles.tar.bz2"
+SOURCE_DIR="$HOME/KaliDesign/Elementos "
+DEST_DIR="$HOME/.config/KaliDesign "
+WALLPAPER_PATH="$DEST_DIR/Wallpapers/wallpaper.jpg "
+PANEL_PATH="$SOURCE_DIR/Paneles/Paneles.tar.bz2 "
 
 # Crear directorio de destino
 if [ ! -d "$DEST_DIR" ]; then
@@ -57,7 +57,6 @@ echo "Fondo de pantalla configurado correctamente."
 
 # Restaurar configuración de paneles XFCE
 if [ -f "$PANEL_PATH" ]; then
-    $PANEL_PATH = "$HOME/KaliDesign/Elementos/Paneles/Paneles.tar.bz2"
     echo "Restaurando configuración de los paneles desde $PANEL_PATH"
     tar -xjf "$PANEL_PATH" -C "$HOME/.config/xfce4/"
     echo "Configuración de paneles restaurada correctamente."
