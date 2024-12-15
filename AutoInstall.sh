@@ -17,6 +17,8 @@ SOURCE_DIR="$HOME/KaliDesign/Elementos"
 DEST_DIR="$HOME/.config/KaliDesign"
 WALLPAPER_PATH="$DEST_DIR/Wallpapers/wallpaper.jpg"
 PANEL_PATH="$SOURCE_DIR/Paneles/Panel.tar.bz2"
+XFCE4_PATH="$SOURCE_DIR/xfce4"
+DEST_DIR_XFCE4="$HOME/.config"
 
 # Crear directorio de destino
 if [ ! -d "$DEST_DIR" ]; then
@@ -55,26 +57,18 @@ done
 
 echo "Fondo de pantalla configurado correctamente."
 
-# Verificar si el archivo Panel.tra.bz2 existe antes de intentar descomprimir
-if [ -f "$PANEL_PATH" ]; then
-    echo "Restaurando configuración de los paneles desde $PANEL_PATH   "
-    # Descomprimir el archivo en la ubicación correcta
-    tar -xjf "$PANEL_PATH" -C "$HOME/.config/xfce4/"
-    echo "Configuración de paneles restaurada correctamente."
-else
-    echo "Error: No se encontró el archivo $PANEL_PATH   "
-    exit 1
+
+# Eliminar carpeta xfce4 y reemplazarla
+if [ -d "$DEST_DIR_XFCE4/xfce4" ]; then
+    echo "Eliminando carpeta existente xfce4 en $DEST_DIR_XFCE4"
+    rm -rf "$DEST_DIR_XFCE4/xfce4"
 fi
 
-# Recargar paneles XFCE
-echo "Recargando configuración de los paneles XFCE"
-xfce4-panel --restart
-echo "Paneles XFCE recargados correctamente."
-
-# Asegurarse de que los cambios sean permanentes (crear o modificar archivo de configuración)
-# Asegurar que la configuración se guarde permanentemente
-echo "Guardando configuración permanentemente..."
-# Copiar la configuración de los paneles a la ubicación correcta
-cp -r "$HOME/.config/xfce4/panel" "$HOME/.config/KaliDesign/xfce4-panel-backup"
-
-echo "La configuración de los paneles se ha guardado correctamente."
+if [ -d "$XFCE4_PATH" ]; then
+    echo "Copiando nueva configuración de xfce4 desde $XFCE4_PATH a $DEST_DIR_XFCE4"
+    cp -r "$XFCE4_PATH" "$DEST_DIR_XFCE4"
+    echo "Configuración de xfce4 reemplazada correctamente."
+else
+    echo "Error: No se encontró el directorio de configuración xfce4 en $XFCE4_PATH."
+    exit 1
+fi
