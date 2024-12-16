@@ -31,11 +31,11 @@ if [ -z "$ip_address_ethernet" ] && [ -z "$ip_address_wifi" ]; then
 fi
 
 # Agregar el icono de la IP
-icon="$HOME/.config/KaliDesign/Elementos/Iconos/ip-address.png"
+icon="$$HOME/Documents/KaliDesign/Elementos/Iconos/ip-address.png"
 
 echo "<txt> $system_type  <img>$icon</img>   $ip_address </txt>"
 
 # Generar el clic para ejecutar el segundo script
 if [ "$ip_address" != "Disconnected" ]; then
-    echo "<txtclick>bash $HOME/.config/KaliDesign/Elementos/Dirección_IP_Copy '$ip_address'</txtclick>"
+    echo "<txtclick>bash $HOME/Documents/KaliDesign/Elementos/Dirección_IP_Copy '$ip_address'</txtclick>"
 fi
