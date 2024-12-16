@@ -18,6 +18,14 @@
 
 - sudo apt update && apt upgrade -y
 
+# Instalación Librerias Necesarias
+
+- sudo apt install zenity
+
+- sudo apt install xclip
+
+- sudo apt install libnotify-bin
+
 # Instalación
 
 - git clone https://github.com/Archimarks/KaliDesign.git

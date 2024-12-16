@@ -33,7 +33,7 @@ fi
 # Agregar el icono de la IP
 icon="$$HOME/Documents/KaliDesign/Elementos/Iconos/ip-address.png"
 
-echo "<txt> $system_type  <img>$icon</img>   $ip_address </txt>"
+echo "<img>$icon</img> <txt> $system_type   $ip_address </txt>"
 
 # Generar el clic para ejecutar el segundo script
 if [ "$ip_address" != "Disconnected" ]; then
