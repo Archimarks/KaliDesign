@@ -42,7 +42,7 @@
 
 ![Paso 3](Preview/Imagen3.png)
 
-- 4. Selecionamos donde esta ubicado nuestro Panel.tar.bz2
+- 4. Selecionamos donde esta ubicado nuestro Panel.tar.bz2 "Desktop". SI CAMBIA EL IDIOMA DE LAS RUTAS SE DEBE CAMBIAR EL AutoInstall.sh
 
 ![Paso 4](Preview/Imagen4.png)
 
