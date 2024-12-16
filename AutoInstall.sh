@@ -30,10 +30,24 @@ if [ -d "$SOURCE_DIR" ]; then
     echo "Copiando archivos desde $SOURCE_DIR a $DEST_DIR"
     cp -r "$SOURCE_DIR"/* "$DEST_DIR/"
     echo "Archivos copiados correctamente."
+
+    # Copiar el archivo Panel.tar.bz2 al escritorio
+    DESKTOP_DIR="$HOME/Escritorio" # Directorio del escritorio
+
+    if [ -f "$PANEL_PATH" ]; then
+        echo "Copiando $PANEL_PATH al escritorio en $DESKTOP_DIR"
+        cp "$PANEL_PATH" "$DESKTOP_DIR/"
+        echo "Archivo copiado correctamente al escritorio."
+    else
+        echo "Error: No se encontró el archivo $PANEL_PATH."
+        exit 1
+    fi
+
 else
     echo "Error: No se encontró el directorio $SOURCE_DIR."
     exit 1
 fi
+
 
 # Eliminar la carpeta original
 echo "Eliminando la carpeta original en $HOME/KaliDesign"
