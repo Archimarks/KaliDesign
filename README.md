@@ -28,33 +28,33 @@
 
 # Importar de panel
 
-Presionar el panel .... Panel preferences...
+- 1. Presionar el panel .... Panel preferences...
 
-![Paso 1](/Preview/Imagen1)
+![Paso 1](Preview/Imagen1.png)
 
-Presionar el Backup and restore.
+- 2. Presionar el Backup and restore.
 
-![Paso 2](/Preview/Imagen2)
+![Paso 2](Preview/Imagen2.png)
 
-Presionar el import.
+- 3. Presionar el import.
 
-![Paso 3](/Preview/Imagen3)
+![Paso 3](Preview/Imagen3.png)
 
-Selecionamos donde esta ubicado nuestro Panel.tar.bz2
+- 4. Selecionamos donde esta ubicado nuestro Panel.tar.bz2
 
-![Paso 4](/Preview/Imagen4)
+![Paso 4](Preview/Imagen4.png)
 
-Guardamos la información.
+- 5. Guardamos la información.
 
-![Paso 5](/Preview/Imagen5)
+![Paso 5](Preview/Imagen5.png)
 
-Selecionamos la cinfiguracion y presionamos ApplyConfiguration.
+- 6. Selecionamos la cinfiguracion y presionamos ApplyConfiguration.
 
-![Paso 6](/Preview/Imagen6)
+![Paso 6](Preview/Imagen6.png)
 
-Presionamos Apply Configuration.
+- 7. Presionamos Apply Configuration.
 
-![Paso 7](/Preview/Imagen7)
+![Paso 7](Preview/Imagen7.png)
 
 ## Créditos
 
