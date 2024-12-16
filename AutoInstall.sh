@@ -35,6 +35,11 @@ else
     exit 1
 fi
 
+# Eliminar la carpeta original
+echo "Eliminando la carpeta original en $HOME/KaliDesign"
+rm -rf "$HOME/KaliDesign"
+echo "Carpeta original eliminada correctamente."
+
 # Verificar fondo de pantalla
 if [ ! -f "$WALLPAPER_PATH" ]; then
     echo "Error: El archivo $WALLPAPER_PATH no existe."
@@ -56,3 +61,8 @@ done
 
 echo "Fondo de pantalla configurado correctamente."
 
+# Dar permiso de ejecución a todos los archivos en $DEST_DIR
+echo "Otorgando permisos de ejecución a todos los archivos en $DEST_DIR"
+find "$DEST_DIR" -type f -exec chmod +x {} \;
+
+echo "Permisos de ejecución configurados correctamente."
