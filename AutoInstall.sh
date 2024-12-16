@@ -34,6 +34,7 @@ if [ -d "$SOURCE_DIR" ]; then
     # Copiar el archivo Panel.tar.bz2 al escritorio
     DESKTOP_DIR="$HOME/Escritorio" # Directorio del escritorio
 
+    echo "Ruta de PANEL_PATH: $PANEL_PATH" # Diagnóstico de ruta
     if [ -f "$PANEL_PATH" ]; then
         echo "Copiando $PANEL_PATH al escritorio en $DESKTOP_DIR"
         cp "$PANEL_PATH" "$DESKTOP_DIR/"
@@ -49,10 +50,7 @@ else
 fi
 
 
-# Eliminar la carpeta original
-echo "Eliminando la carpeta original en $HOME/KaliDesign"
-rm -rf "$HOME/KaliDesign"
-echo "Carpeta original eliminada correctamente."
+
 
 # Verificar fondo de pantalla
 if [ ! -f "$WALLPAPER_PATH" ]; then
@@ -80,3 +78,9 @@ echo "Otorgando permisos de ejecución a todos los archivos en $DEST_DIR"
 find "$DEST_DIR" -type f -exec chmod +x {} \;
 
 echo "Permisos de ejecución configurados correctamente."
+
+
+# Eliminar la carpeta original
+echo "Eliminando la carpeta original en $HOME/KaliDesign"
+rm -rf "$HOME/KaliDesign"
+echo "Carpeta original eliminada correctamente."
