@@ -29,25 +29,25 @@
 # Importar de panel
 
 - 1. Presionar el panel .... Panel preferences...
-     ![Preview Entorno](/Preview/Imagen_1 "KaliDesing by Archimarks")
+     ![Paso 1](/Preview/Imagen_1 "KaliDesing by Archimarks")
 
 - 2. Presionar el Backup and restore.
-     ![Preview Entorno](/Preview/Imagen_2 "KaliDesing by Archimarks")
+     ![Paso 2](/Preview/Imagen_2 "KaliDesing by Archimarks")
 
 - 3. Presionar el import.
-     ![Preview Entorno](/Preview/Imagen_3 "KaliDesing by Archimarks")
+     ![Paso 3](/Preview/Imagen_3 "KaliDesing by Archimarks")
 
 - 4. Selecionamos donde esta ubicado nuestro Panel.tar.bz2
-     ![Preview Entorno](/Preview/Imagen_4 "KaliDesing by Archimarks")
+     ![Paso 4](/Preview/Imagen_4 "KaliDesing by Archimarks")
 
 - 5. Guardamos la información.
-     ![Preview Entorno](/Preview/Imagen_5 "KaliDesing by Archimarks")
+     ![Paso 5](/Preview/Imagen_5 "KaliDesing by Archimarks")
 
 - 6. Selecionamos la cinfiguracion y presionamos ApplyConfiguration.
-     ![Preview Entorno](/Preview/Imagen_6 "KaliDesing by Archimarks")
+     ![Paso 6](/Preview/Imagen_6 "KaliDesing by Archimarks")
 
 - 7. Presionamos Apply Configuration.
-     ![Preview Entorno](/Preview/Imagen_7 "KaliDesing by Archimarks")
+     ![Paso 1](/Preview/Imagen_7 "KaliDesing by Archimarks")
 
 ## Créditos
 
