@@ -14,7 +14,7 @@ echo '
 
 # Configuración
 SOURCE_DIR="$HOME/KaliDesign"
-DEST_DIR=".config/KaliDesign"
+DEST_DIR="$HOME/.config/KaliDesign"
 WALLPAPER_PATH="$DEST_DIR/Elementos/Wallpapers/wallpaper1.jpg"
 PANEL_PATH="$SOURCE_DIR/Elementos/Paneles/Panel.tar.bz2"
 DEST_DIR_XFCE4="$HOME/.config"
