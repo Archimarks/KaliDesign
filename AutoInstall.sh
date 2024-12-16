@@ -13,10 +13,10 @@ echo '
 '
 
 # Configuración
-SOURCE_DIR="$HOME/KaliDesign/Elementos"
+SOURCE_DIR="$HOME/KaliDesign"
 DEST_DIR="$HOME/.config/KaliDesign"
 WALLPAPER_PATH="$DEST_DIR/Wallpapers/wallpaper1.jpg"
-PANEL_PATH="$SOURCE_DIR/Paneles/Panel.tar.bz2"
+PANEL_PATH="$SOURCE_DIR/Elementos/Paneles/Panel.tar.bz2"
 DEST_DIR_XFCE4="$HOME/.config"
 
 # Crear directorio de destino
