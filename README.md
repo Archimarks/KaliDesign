@@ -14,9 +14,11 @@
 
 - Inicialmente solo se utilizaron las herramientas que se instala el Kali Linux
 
-# Instalación
+# Actualización del Sistema Operativo
 
-- apt update && apt upgrade -y
+- sudo apt update && apt upgrade -y
+
+# Instalación
 
 - git clone https://github.com/Archimarks/KaliDesign.git
 

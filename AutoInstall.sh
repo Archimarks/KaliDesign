@@ -32,7 +32,7 @@ if [ -d "$SOURCE_DIR" ]; then
     echo "Archivos copiados correctamente."
 
     # Copiar el archivo Panel.tar.bz2 al escritorio
-    DESKTOP_DIR="$HOME/Escritorio" # Directorio del escritorio
+    DESKTOP_DIR="$HOME/Desktop" # Directorio del escritorio
 
     echo "Ruta de PANEL_PATH: $PANEL_PATH" # Diagnóstico de ruta
     if [ -f "$PANEL_PATH" ]; then
