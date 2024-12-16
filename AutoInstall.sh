@@ -15,7 +15,7 @@ echo '
 # Configuración
 SOURCE_DIR="$HOME/KaliDesign"
 DEST_DIR="$HOME/.config/KaliDesign"
-WALLPAPER_PATH="$DEST_DIR/Wallpapers/wallpaper1.jpg"
+WALLPAPER_PATH="$DEST_DIR/Elementos/Wallpapers/wallpaper1.jpg"
 PANEL_PATH="$SOURCE_DIR/Elementos/Paneles/Panel.tar.bz2"
 DEST_DIR_XFCE4="$HOME/.config"
 
@@ -72,6 +72,8 @@ for MONITOR in $MONITORS; do
 done
 
 echo "Fondo de pantalla configurado correctamente."
+
+cd 
 
 # Dar permiso de ejecución a todos los archivos en $DEST_DIR
 echo "Otorgando permisos de ejecución a todos los archivos en $DEST_DIR"
