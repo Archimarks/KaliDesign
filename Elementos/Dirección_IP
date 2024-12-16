@@ -37,5 +37,5 @@ echo "<txt> $system_type  <img>$icon</img>   $ip_address </txt>"
 
 # Generar el clic para ejecutar el segundo script
 if [ "$ip_address" != "Disconnected" ]; then
-    echo "<txtclick>bash ~/KaliDesign/Elementos/Dirección_IP_Copy '$ip_address'</txtclick>"
+    echo "<txtclick>bash $HOME/.config/KaliDesign/Elementos/Dirección_IP_Copy '$ip_address'</txtclick>"
 fi
