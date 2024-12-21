@@ -16,7 +16,7 @@
 
 # Actualización del Sistema Operativo
 
-- sudo apt update && apt upgrade -y
+- sudo apt update && sudo apt upgrade -y
 
 # Instalación Librerias Necesarias
 
